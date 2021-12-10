@@ -13,7 +13,6 @@ import (
 	3.函数可以作为变量的值
 	4.函数可以作为参数或返回值
 */
-
 func returnMultiValues() (int, int) {
 	return rand.Intn(10), rand.Intn(32)
 }
