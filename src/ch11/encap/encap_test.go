@@ -45,3 +45,4 @@ func TestStructOperations(t *testing.T) {
 	t.Log(e.String())
 	t.Log(e.PointerString())
 }
+ 
