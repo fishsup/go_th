@@ -12,6 +12,7 @@ func dataProducer(ch chan int, wg *sync.WaitGroup) {
 			ch <- i
 		}
 		close(ch)
+		// ch <- 11   向关闭的通道继续发送消息会导致 panic: send on closed channel
 		wg.Done()
 	}()
 }
@@ -23,6 +24,7 @@ func dataReceiver(ch chan int, wg *sync.WaitGroup) {
 				fmt.Println(data)
 			} else {
 				fmt.Println("channel closed")
+				break
 			}
 		}
 		wg.Done()
