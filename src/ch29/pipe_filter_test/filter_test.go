@@ -11,7 +11,7 @@ func TestFilter(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if ret != 1 {
+	if ret != 15 {
 		t.Fatal("result error")
 	}
 
