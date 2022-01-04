@@ -1,4 +1,4 @@
-package json
+package easyjson
 
 import (
 	"encoding/json"
@@ -7,31 +7,31 @@ import (
 
 /* go内置 利用反射实现,
 通过FieldTag来标识对应的json值 */
-type BasicInfo struct {
+type BasicInfoEmbedded struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
 }
 
-type JobInfo struct {
+type JobInfoEmbedded struct {
 	Skills []string `json:"skills"`
 }
 
-type Employee struct {
-	BasicInfo *BasicInfo `json:"basic_info"`
-	JobInfo   *JobInfo   `json:"job_info"`
+type EmployeeEmbedded struct {
+	BasicInfoEmbedded  `json:"basic_info"`
+	JobInfoEmbedded      `json:"job_info"`
 }
 
-func TestEmbeddedJson(t *testing.T) {
-	b := BasicInfo{Age: 19, Name: "etest"}
+func TestEmbeddedJson1(t *testing.T) {
+	b := BasicInfoEmbedded{Age: 19, Name: "etest"}
 	//json.Marshal返回[]byte与err
 	basic_info_json, _ := json.Marshal(b)
 	t.Log(string(basic_info_json))
 
-	j := JobInfo{Skills: []string{"1", "2"}}
+	j := JobInfoEmbedded{Skills: []string{"1", "2"}}
 	job_info_json, _ := json.Marshal(j)
 	t.Log(string(job_info_json))
 
-	e := Employee{BasicInfo: &b, JobInfo: &j}
+	e := EmployeeEmbedded{BasicInfoEmbedded: b, JobInfoEmbedded: j}
 	if v, err := json.Marshal(e); err == nil {
 		t.Log(string(v))
 	} else {
@@ -50,8 +50,8 @@ func TestEmbeddedJson(t *testing.T) {
 			]
 		}
 	}`
-	ue := new(Employee)
+	ue := new(EmployeeEmbedded)
 	json.Unmarshal([]byte(str), ue)
-	t.Log(ue.BasicInfo)
-	t.Log(ue.JobInfo)
+	t.Log(ue.BasicInfoEmbedded)
+	t.Log(ue.JobInfoEmbedded)
 }
