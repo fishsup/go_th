@@ -54,7 +54,7 @@ func TestObjPool(t *testing.T) {
 	// 	t.Error(err)
 	// }
 
-	for i := 0; i < 11; i++ {
+	for i := 0; i < 10; i++ {
 		if v, err := pool.GetObjWithTimeOut(time.Second * 1); err != nil {
 			t.Error(err)
 		} else {
@@ -63,7 +63,7 @@ func TestObjPool(t *testing.T) {
 			// 	t.Error(err)
 			// }
 		}
-	} 
+	}
 	fmt.Println("DONE")
 
 }

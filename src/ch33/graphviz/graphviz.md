@@ -7,6 +7,7 @@
 通过文件方式输出Profile
 
 
+```azure
 $ go tool pprof prof cpu.prof
 File: prof
 Type: cpu
@@ -35,8 +36,7 @@ ROUTINE ======================== main.fillMatrix in /Users/chenxiang/vscode/go-t
          .          .     70:   }
          .          .     71:}
 (pprof) svg
-
-
+```
 
 
 web图形化查看:
