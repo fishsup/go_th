@@ -1,9 +1,8 @@
-package _06
+package linkedlist
 
 import (
 	"fmt"
 	"testing"
-	"go_ph/leetcode/linkedlist"
 )
 
 //给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -50,13 +49,12 @@ import (
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-
 func (s *ListNode) String() string {
 	return fmt.Sprintf("{Val: %v, Next: %v}", s.Val, s.Next)
 }
 
 func TestReverseList(t *testing.T) {
-	head:= &ListNode{Val: 1}
+	head := &ListNode{Val: 1}
 	cur := head
 	for i := 2; i < 10; i++ {
 		cur.Next = &ListNode{Val: i}

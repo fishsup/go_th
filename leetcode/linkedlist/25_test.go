@@ -1,4 +1,4 @@
-package leetcode_25
+package linkedlist
 
 import (
 	"testing"
@@ -52,10 +52,6 @@ k 是一个正整数，它的值小于或等于链表的长度。
  *     Next *ListNode
  * }
  */
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 /* 剩余的节点需要保持原有顺序 */
 func reverseKGroup(head *ListNode, k int) *ListNode {

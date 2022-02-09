@@ -34,7 +34,6 @@ package linkedlist
 //
 // Related Topics 链表 双指针 👍 484 👎 0
 
-
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
@@ -45,7 +44,13 @@ package linkedlist
  */
 
 func middleNode(head *ListNode) *ListNode {
-	var
+	var slow = head
+	var fast = head
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	return slow
 }
-//leetcode submit region end(Prohibit modification and deletion)
 
+//leetcode submit region end(Prohibit modification and deletion)

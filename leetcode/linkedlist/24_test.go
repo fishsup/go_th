@@ -1,4 +1,5 @@
-package _4
+package linkedlist
+
 //给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
 //
 //
@@ -34,7 +35,6 @@ package _4
 //
 // Related Topics 递归 链表 👍 1230 👎 0
 
-
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
@@ -43,17 +43,12 @@ package _4
  *     Next *ListNode
  * }
  */
-type ListNode struct {
-	Val int
-	Next *ListNode
-}
-
 func swapPairs(head *ListNode) *ListNode {
-	newHead:=new(ListNode)
+	newHead := new(ListNode)
 	prev := newHead
 	cur := head
 	//有两个节点时进行交换
-	for cur != nil && cur.Next !=nil{
+	for cur != nil && cur.Next != nil {
 		//头结点指向第二个节点
 		prev.Next = cur.Next
 		cur.Next = nil
@@ -67,9 +62,10 @@ func swapPairs(head *ListNode) *ListNode {
 		//当前节点为第三个节点
 		cur = next
 	}
-	if cur!= nil && cur.Next==nil {
+	if cur != nil && cur.Next == nil {
 		prev.Next = cur
 	}
 	return newHead.Next
 }
+
 //leetcode submit region end(Prohibit modification and deletion)
