@@ -3,6 +3,7 @@ package _06
 import (
 	"fmt"
 	"testing"
+	"go_ph/leetcode/linkedlist"
 )
 
 //给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
@@ -49,10 +50,6 @@ import (
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 func (s *ListNode) String() string {
 	return fmt.Sprintf("{Val: %v, Next: %v}", s.Val, s.Next)
