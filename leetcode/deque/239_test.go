@@ -1,6 +1,10 @@
 package deque
 
-import "testing"
+import (
+	"container/heap"
+	"sort"
+	"testing"
+)
 
 //给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位
 //。
@@ -77,6 +81,40 @@ func maxSlidingWindow(nums []int, k int) []int {
 		}
 	}
 	return result
+}
+
+var a []int
+
+type hp struct{ sort.IntSlice }
+
+func (h hp) Less(i, j int) bool  { return a[h.IntSlice[i]] > a[h.IntSlice[j]] }
+func (h *hp) Push(v interface{}) { h.IntSlice = append(h.IntSlice, v.(int)) }
+func (h *hp) Pop() interface{} {
+	a := h.IntSlice
+	v := a[len(a)-1]
+	h.IntSlice = a[:len(a)-1]
+	return v
+}
+
+func maxSlidingWindow2(nums []int, k int) []int {
+	a = nums
+	q := &hp{make([]int, k)}
+	for i := 0; i < k; i++ {
+		q.IntSlice[i] = i
+	}
+	heap.Init(q)
+
+	n := len(nums)
+	ans := make([]int, 1, n-k+1)
+	ans[0] = nums[q.IntSlice[0]]
+	for i := k; i < n; i++ {
+		heap.Push(q, i)
+		for q.IntSlice[0] <= i-k {
+			heap.Pop(q)
+		}
+		ans = append(ans, nums[q.IntSlice[0]])
+	}
+	return ans
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
