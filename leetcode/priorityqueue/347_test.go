@@ -34,11 +34,6 @@ import "container/heap"
 // 进阶：你所设计算法的时间复杂度 必须 优于 O(n log n) ，其中 n 是数组大小。
 // Related Topics 数组 哈希表 分治 桶排序 计数 快速选择 排序 堆（优先队列） 👍 1010 👎 0
 
-type Vobj struct {
-	Val int
-	Fre int
-}
-
 //leetcode submit region begin(Prohibit modification and deletion)
 func topKFrequent(nums []int, k int) []int {
 	//map 统计出现次数O(n)
