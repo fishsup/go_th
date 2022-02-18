@@ -99,19 +99,25 @@ func topKFrequent1(nums []int, k int) []int {
 
 func qsort(values [][]int, start, end int, ret []int, retIndex, k int) {
 	rand.Seed(time.Now().UnixNano())
+
+	//随机选一个基准
 	picked := rand.Int()%(end-start+1) + start
+	//把基准替换到第一个位置上去 start=idx=0
 	values[picked], values[start] = values[start], values[picked]
 
 	pivot := values[start][1]
 	index := start
 
+	//遍历数组对比  比基准值大的就和index++互换 最终1到index之内的值都是比基准值大的
 	for i := start + 1; i <= end; i++ {
 		if values[i][1] >= pivot {
 			values[index+1], values[i] = values[i], values[index+1]
 			index++
 		}
 	}
+	//0位置上的基准值和index互换
 	values[start], values[index] = values[index], values[start]
+
 	if k <= index-start {
 		qsort(values, start, index-1, ret, retIndex, k)
 	} else {
