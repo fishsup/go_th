@@ -29,8 +29,8 @@ func qSort(arr []int, idxs int, idxe int) {
 			arr[i], arr[j+1] = arr[j+1], arr[i]
 			j++
 		}
-		arr[j], arr[idxs] = arr[idxs], arr[j]
 	}
+	arr[j], arr[idxs] = arr[idxs], arr[j]
 	qSort(arr, idxs, j)
 	qSort(arr, j+1, idxe)
 }
