@@ -49,5 +49,4 @@ func searchLastEle(nums []int, target, low, hign int) int {
 		return searchLastEle(nums, target, mid+1, hign)
 	}
 }
-
 // @lc code=end
